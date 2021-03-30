@@ -22,7 +22,7 @@ function App() {
   const [text, setText] = useState("");
   const [key, setKey] = useState("");
 
-  const alphaExp = /[^a-zA-Z]/;
+  const alphaExp = /[^a-zA-Z ]/;
   const alphaNumExp = /^[0-9a-zA-Z]+$/;
   const numExp = /[^0-9]/;
   const specialCharExp = /^[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/;

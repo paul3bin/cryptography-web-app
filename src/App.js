@@ -13,6 +13,7 @@ function App() {
     "Morse Code",
     "Vignere Cipher",
     "Running Key Cipher",
+    "ROT13",
   ];
   const operation_list = ["encrypt", "decrypt"];
 
@@ -23,9 +24,7 @@ function App() {
   const [key, setKey] = useState("");
 
   const alphaExp = /[^a-zA-Z ]/;
-  const alphaNumExp = /^[0-9a-zA-Z]+$/;
   const numExp = /[^0-9]/;
-  const specialCharExp = /^[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/;
 
   const textKeyEmptyToast = () => {
     toast.error("Text and/or Key cannot be empty ", {
@@ -34,7 +33,7 @@ function App() {
   };
 
   const alphabetExpToast = () => {
-    toast.error("Key and Text can contain only alphabets", {
+    toast.error("Text and/or Key can contain only alphabets", {
       position: toast.POSITION.TOP_RIGHT,
     });
   };
@@ -101,10 +100,21 @@ function App() {
           key: key,
         }).then((resp) => setResult(resp.result));
       }
+    } else if (algo === "ROT13") {
+      if (alphaExp.test(text) === true) {
+        alphabetExpToast();
+      } else if (text.length === 0) {
+        textKeyEmptyToast();
+      } else {
+        API.ROT13API({
+          operation: operation,
+          text: text,
+        }).then((resp) => setResult(resp.result));
+      }
     }
   };
 
-  const isDisabled = algo === "Morse Code";
+  const isDisabled = algo === "Morse Code" || algo === "ROT13";
 
   return (
     <div className="App">

@@ -1,4 +1,15 @@
 export class API {
+  static ROT13API(body) {
+    return fetch(`https://cryptography-flask-api.herokuapp.com/rot13`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(body),
+    }).then((resp) => resp.json());
+  }
+
   static caesarAPI(body) {
     return fetch(`https://cryptography-flask-api.herokuapp.com/caesar`, {
       method: "POST",

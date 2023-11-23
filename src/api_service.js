@@ -1,6 +1,8 @@
 export class API {
+  static HOSTNAME = process.env.HOSTNAME;
+
   static ROT13API(body) {
-    return fetch(`https://cryptography-flask-api.herokuapp.com/rot13`, {
+    return fetch(`${API.HOSTNAME}/rot13`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -11,7 +13,7 @@ export class API {
   }
 
   static caesarAPI(body) {
-    return fetch(`https://cryptography-flask-api.herokuapp.com/caesar`, {
+    return fetch(`${API.HOSTNAME}/caesar`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -22,7 +24,7 @@ export class API {
   }
 
   static morseCodeAPI(body) {
-    return fetch(`https://cryptography-flask-api.herokuapp.com/morsecode`, {
+    return fetch(`${API.HOSTNAME}/morsecode`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -33,7 +35,7 @@ export class API {
   }
 
   static vignereCipherAPI(body) {
-    return fetch(`https://cryptography-flask-api.herokuapp.com/vignere`, {
+    return fetch(`${API.HOSTNAME}/vignere`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -44,16 +46,13 @@ export class API {
   }
 
   static runningKeyCipherAPI(body) {
-    return fetch(
-      `https://cryptography-flask-api.herokuapp.com/runningkeycipher`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(body),
-      }
-    ).then((resp) => resp.json());
+    return fetch(`${API.HOSTNAME}/runningkeycipher`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(body),
+    }).then((resp) => resp.json());
   }
 }

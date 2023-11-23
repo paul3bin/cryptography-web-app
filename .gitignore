@@ -31,3 +31,5 @@ yarn-error.log*
 .runtimeconfig.json
 .firebase/
 firebase.json
+
+.env

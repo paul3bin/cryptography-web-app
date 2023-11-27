@@ -1,8 +1,8 @@
 export class API {
-  static HOSTNAME = process.env.HOSTNAME;
+  static BACKEND_HOST = process.env.REACT_APP_BACKEND_HOST;
 
   static ROT13API(body) {
-    return fetch(`${API.HOSTNAME}/rot13`, {
+    return fetch(`${API.BACKEND_HOST}/rot13`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -13,7 +13,7 @@ export class API {
   }
 
   static caesarAPI(body) {
-    return fetch(`${API.HOSTNAME}/caesar`, {
+    return fetch(`${API.BACKEND_HOST}/caesar`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -24,7 +24,7 @@ export class API {
   }
 
   static morseCodeAPI(body) {
-    return fetch(`${API.HOSTNAME}/morsecode`, {
+    return fetch(`${API.BACKEND_HOST}/morsecode`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -35,7 +35,7 @@ export class API {
   }
 
   static vignereCipherAPI(body) {
-    return fetch(`${API.HOSTNAME}/vignere`, {
+    return fetch(`${API.BACKEND_HOST}/vignere`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -46,7 +46,7 @@ export class API {
   }
 
   static runningKeyCipherAPI(body) {
-    return fetch(`${API.HOSTNAME}/runningkeycipher`, {
+    return fetch(`${API.BACKEND_HOST}/runningkeycipher`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
